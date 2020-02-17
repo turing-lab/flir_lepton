@@ -62,8 +62,8 @@ int main( int argc, char **argv )
 	lepton->useLepton(typeLepton);
 	lepton->useSpiSpeedMhz(spiSpeed);
 	lepton->setAutomaticScalingRange();
-	if (0 <= rangeMin) thread->useRangeMinValue(rangeMin);
-	if (0 <= rangeMax) thread->useRangeMaxValue(rangeMax);
+	if (0 <= rangeMin) lepton->useRangeMinValue(rangeMin);
+	if (0 <= rangeMax) lepton->useRangeMaxValue(rangeMax);
 	// // QObject::connect(thread, SIGNAL(updateImage(QImage)), &myLabel, SLOT(setImage(QImage)));
   //
 	// //connect ffc button to the thread's ffc action
