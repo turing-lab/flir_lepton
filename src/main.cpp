@@ -55,6 +55,7 @@ int main( int argc, char **argv )
   ROS_INFO("Flir Lepton rangeMin: %d, rangeMax: %d", rangeMin, rangeMax);
 
   ros::Publisher imagePublisher = nh.advertise<sensor_msgs::Image>(topicName, 10);
+
 	//create a thread to gather SPI data
 	//when the thread emits updateImage, the label should update its image accordingly
 	LeptonThread *lepton = new LeptonThread();
@@ -66,6 +67,7 @@ int main( int argc, char **argv )
   lepton->setPublisher(imagePublisher);
 	if (0 <= rangeMin) lepton->useRangeMinValue(rangeMin);
 	if (0 <= rangeMax) lepton->useRangeMaxValue(rangeMax);
+  ros::ServiceServer performFCC = nh.advertiseService("performFCC", &LeptonThread::performFFC, lepton);
 	// // QObject::connect(thread, SIGNAL(updateImage(QImage)), &myLabel, SLOT(setImage(QImage)));
   //
 	// //connect ffc button to the thread's ffc action

@@ -59,6 +59,9 @@
   <exec_depend>cv_bridge</exec_depend>
   <build_depend>rqt_gui_cpp</build_depend>
 	<build_depend>rqt_gui</build_depend>
+  <build_depend>std_srvs</build_depend>
+
+   <exec_depend>std_srvs</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

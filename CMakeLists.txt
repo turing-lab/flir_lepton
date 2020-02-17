@@ -16,6 +16,7 @@ find_package( OpenCV REQUIRED )
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+	std_srvs
 	cv_bridge
   sensor_msgs
 	rqt_gui_cpp

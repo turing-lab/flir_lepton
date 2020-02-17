@@ -11,6 +11,7 @@
 
 #include "ros/ros.h"
 #include <opencv2/opencv.hpp>
+#include <std_srvs/Empty.h>
 
 #define PACKET_SIZE 164
 #define PACKET_SIZE_UINT16 (PACKET_SIZE/2)
@@ -39,7 +40,7 @@ public:
   void run();
 
 // public slots:
-  void performFFC();
+  bool performFFC(std_srvs::Empty::Request&, std_srvs::Empty::Response&);
 
 // signals:
   // void updateText(QString);

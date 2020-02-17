@@ -299,10 +299,12 @@ void LeptonThread::publishImage()
 	}
 }
 
-void LeptonThread::performFFC()
+bool LeptonThread::performFFC(std_srvs::Empty::Request&, std_srvs::Empty::Response&)
 {
 	//perform FFC
 	lepton_perform_ffc();
+	ROS_INFO("Lepton Perform FFC.");
+	return true;
 }
 
 void LeptonThread::log_message(uint16_t level, std::string msg)
