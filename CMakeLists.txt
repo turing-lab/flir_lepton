@@ -5,6 +5,9 @@ find_package(Qt4 COMPONENTS QtCore QtGui)
 INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
+find_package( OpenCV REQUIRED )
+# target_link_libraries( DisplayImage ${OpenCV_LIBS} )
+
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -13,6 +16,7 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+	cv_bridge
   sensor_msgs
 	rqt_gui_cpp
 	rqt_gui
@@ -177,6 +181,7 @@ add_executable(
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
+	${OpenCV_LIBS}
 )
 
 #############

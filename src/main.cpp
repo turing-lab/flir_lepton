@@ -10,8 +10,8 @@
 #include <QPushButton>
 
 #include "ros/ros.h"
+#include <sensor_msgs/Image.h>
 #include "flir_lepton_rpi/LeptonThread.h"
-
 #define RAINBOW 1
 #define GRAYSCALE 2
 #define IRONBLACK 3
@@ -30,6 +30,7 @@ int main( int argc, char **argv )
 	int rangeMin; //
 	int rangeMax; //
 	int loglevel;
+  std::string topicName = "thermal_image";
 
   if(!nh.getParam("typeColormap", typeColormap))
     typeColormap = IRONBLACK;
@@ -53,7 +54,7 @@ int main( int argc, char **argv )
   ROS_INFO("Flir Lepton typeLepton: %d, SpiSpeed: %d", typeColormap, spiSpeed);
   ROS_INFO("Flir Lepton rangeMin: %d, rangeMax: %d", rangeMin, rangeMax);
 
-
+  ros::Publisher imagePublisher = nh.advertise<sensor_msgs::Image>(topicName, 10);
 	//create a thread to gather SPI data
 	//when the thread emits updateImage, the label should update its image accordingly
 	LeptonThread *lepton = new LeptonThread();
@@ -62,6 +63,7 @@ int main( int argc, char **argv )
 	lepton->useLepton(typeLepton);
 	lepton->useSpiSpeedMhz(spiSpeed);
 	lepton->setAutomaticScalingRange();
+  lepton->setPublisher(imagePublisher);
 	if (0 <= rangeMin) lepton->useRangeMinValue(rangeMin);
 	if (0 <= rangeMax) lepton->useRangeMaxValue(rangeMax);
 	// // QObject::connect(thread, SIGNAL(updateImage(QImage)), &myLabel, SLOT(setImage(QImage)));

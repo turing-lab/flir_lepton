@@ -9,12 +9,14 @@
 #include <QPixmap>
 #include <QImage>
 
+#include "ros/ros.h"
+#include <opencv2/opencv.hpp>
+
 #define PACKET_SIZE 164
 #define PACKET_SIZE_UINT16 (PACKET_SIZE/2)
 #define PACKETS_PER_FRAME 60
 #define FRAME_SIZE_UINT16 (PACKET_SIZE_UINT16*PACKETS_PER_FRAME)
 
-// namespace flir_lepton_rpi {
 
 class LeptonThread
 // : public QThread
@@ -32,6 +34,8 @@ public:
   void setAutomaticScalingRange();
   void useRangeMinValue(uint16_t);
   void useRangeMaxValue(uint16_t);
+  void setPublisher(ros::Publisher);
+  void publishImage();
   void run();
 
 // public slots:
@@ -56,13 +60,14 @@ private:
   uint16_t rangeMax;
   int myImageWidth;
   int myImageHeight;
-  // QImage myImage;
+  int imgCount;
+  cv::Mat myImage;
+  ros::Publisher publisherImage;
 
   uint8_t result[PACKET_SIZE*PACKETS_PER_FRAME];
   uint8_t shelf[4][PACKET_SIZE*PACKETS_PER_FRAME];
   uint16_t *frameBuffer;
 
 };
-// }
 
 #endif

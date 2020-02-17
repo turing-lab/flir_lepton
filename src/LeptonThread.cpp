@@ -5,6 +5,9 @@
 #include "flir_lepton_rpi/Palettes.h"
 #include "flir_lepton_rpi/SPI.h"
 #include "flir_lepton_rpi/Lepton_I2C.h"
+#include <sensor_msgs/Image.h>
+#include <sensor_msgs/image_encodings.h>
+#include <cv_bridge/cv_bridge.h>
 
 #define PACKET_SIZE 164
 #define PACKET_SIZE_UINT16 (PACKET_SIZE/2)
@@ -35,6 +38,8 @@ LeptonThread::LeptonThread()
 	autoRangeMax = true;
 	rangeMin = 30000;
 	rangeMax = 32000;
+
+	imgCount = 0;
 }
 
 LeptonThread::~LeptonThread() {
@@ -47,37 +52,39 @@ void LeptonThread::setLogLevel(uint16_t newLoglevel)
 
 void LeptonThread::useColormap(int newTypeColormap)
 {
-	switch (newTypeColormap) {
-	case 1:
-		typeColormap = 1;
-		selectedColormap = colormap_rainbow;
-		selectedColormapSize = get_size_colormap_rainbow();
-		break;
-	case 2:
-		typeColormap = 2;
-		selectedColormap = colormap_grayscale;
-		selectedColormapSize = get_size_colormap_grayscale();
-		break;
-	default:
-		typeColormap = 3;
-		selectedColormap = colormap_ironblack;
-		selectedColormapSize = get_size_colormap_ironblack();
-		break;
+	switch (newTypeColormap)
+	{
+		case 1:
+			typeColormap = 1;
+			selectedColormap = colormap_rainbow;
+			selectedColormapSize = get_size_colormap_rainbow();
+			break;
+		case 2:
+			typeColormap = 2;
+			selectedColormap = colormap_grayscale;
+			selectedColormapSize = get_size_colormap_grayscale();
+			break;
+		default:
+			typeColormap = 3;
+			selectedColormap = colormap_ironblack;
+			selectedColormapSize = get_size_colormap_ironblack();
+			break;
 	}
 }
 
 void LeptonThread::useLepton(int newTypeLepton)
 {
-	switch (newTypeLepton) {
-	case 3:
-		typeLepton = 3;
-		myImageWidth = 160;
-		myImageHeight = 120;
-		break;
-	default:
-		typeLepton = 2;
-		myImageWidth = 80;
-		myImageHeight = 60;
+	switch (newTypeLepton)
+	{
+		case 3:
+			typeLepton = 3;
+			myImageWidth = 160;
+			myImageHeight = 120;
+			break;
+		default:
+			typeLepton = 2;
+			myImageWidth = 80;
+			myImageHeight = 60;
 	}
 }
 
@@ -104,10 +111,15 @@ void LeptonThread::useRangeMaxValue(uint16_t newMaxValue)
 	rangeMax = newMaxValue;
 }
 
+void LeptonThread::setPublisher(ros::Publisher pub)
+{
+	publisherImage = pub;
+}
+
 void LeptonThread::run()
 {
 	//create the initial image
-	// myImage = QImage(myImageWidth, myImageHeight, QImage::Format_RGB888);
+	myImage = cv::Mat(myImageWidth, myImageHeight, CV_8UC3);
 
 	const int *colormap = selectedColormap;
 	const int colormapSize = selectedColormapSize;
@@ -222,7 +234,7 @@ void LeptonThread::run()
 		int row, column;
 		uint16_t value;
 		uint16_t valueFrameBuffer;
-		QRgb color;
+		cv::Vec3b color;
 		for(int iSegment = iSegmentStart; iSegment <= iSegmentStop; iSegment++) {
 			int ofsRow = 30 * (iSegment - 1);
 			for(int i=0;i<FRAME_SIZE_UINT16;i++) {
@@ -247,7 +259,7 @@ void LeptonThread::run()
 				int ofs_r = 3 * value + 0; if (colormapSize <= ofs_r) ofs_r = colormapSize - 1;
 				int ofs_g = 3 * value + 1; if (colormapSize <= ofs_g) ofs_g = colormapSize - 1;
 				int ofs_b = 3 * value + 2; if (colormapSize <= ofs_b) ofs_b = colormapSize - 1;
-				color = qRgb(colormap[ofs_r], colormap[ofs_g], colormap[ofs_b]);
+				color = cv::Vec3b(colormap[ofs_r], colormap[ofs_g], colormap[ofs_b]);
 				if (typeLepton == 3) {
 					column = (i % PACKET_SIZE_UINT16) - 2 + (myImageWidth / 2) * ((i % (PACKET_SIZE_UINT16 * 2)) / PACKET_SIZE_UINT16);
 					row = i / PACKET_SIZE_UINT16 / 2 + ofsRow;
@@ -256,7 +268,7 @@ void LeptonThread::run()
 					column = (i % PACKET_SIZE_UINT16) - 2;
 					row = i / PACKET_SIZE_UINT16;
 				}
-				// myImage.setPixel(column, row, color);
+				myImage.at<cv::Vec3b>(row, column) = color;
 			}
 		}
 
@@ -266,14 +278,29 @@ void LeptonThread::run()
 		}
 
 		//lets emit the signal for update
-		// emit updateImage(myImage);
+		publishImage();
 	}
 
 	//finally, close SPI port just bcuz
 	SpiClosePort(0);
 }
 
-void LeptonThread::performFFC() {
+void LeptonThread::publishImage()
+{
+	if (publisherImage != NULL) {
+		cv_bridge::CvImage img_bridge;
+		sensor_msgs::Image img_msg; // >> message to be sent
+		std_msgs::Header header; // empty header
+		header.seq = imgCount++; // user defined counter
+		header.stamp = ros::Time::now(); // time
+		img_bridge = cv_bridge::CvImage(header, sensor_msgs::image_encodings::RGB8, myImage);
+		img_bridge.toImageMsg(img_msg); // from cv_bridge to sensor_msgs::Image
+		publisherImage.publish(img_msg); // ros::Publisher pub_img = node.advertise<sensor_msgs::Image>("topic", queuesize);
+	}
+}
+
+void LeptonThread::performFFC()
+{
 	//perform FFC
 	lepton_perform_ffc();
 }
@@ -281,6 +308,6 @@ void LeptonThread::performFFC() {
 void LeptonThread::log_message(uint16_t level, std::string msg)
 {
 	if (level <= loglevel) {
-		std::cerr << msg << std::endl;
+		ROS_ERROR_STREAM(msg << std::endl);
 	}
 }
