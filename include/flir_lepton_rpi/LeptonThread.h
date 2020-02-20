@@ -4,11 +4,6 @@
 #include <ctime>
 #include <stdint.h>
 
-#include <QThread>
-#include <QtCore>
-#include <QPixmap>
-#include <QImage>
-
 #include "ros/ros.h"
 #include <opencv2/opencv.hpp>
 #include <std_srvs/Empty.h>

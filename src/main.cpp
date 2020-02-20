@@ -1,14 +1,3 @@
-#include <QApplication>
-#include <QThread>
-#include <QMutex>
-#include <QMessageBox>
-
-#include <QColor>
-#include <QLabel>
-#include <QtDebug>
-#include <QString>
-#include <QPushButton>
-
 #include "ros/ros.h"
 #include <sensor_msgs/Image.h>
 #include "flir_lepton_rpi/LeptonThread.h"
@@ -67,7 +56,7 @@ int main( int argc, char **argv )
   lepton->setPublisher(imagePublisher);
 	if (0 <= rangeMin) lepton->useRangeMinValue(rangeMin);
 	if (0 <= rangeMax) lepton->useRangeMaxValue(rangeMax);
-  ros::ServiceServer performFCC = nh.advertiseService("performFCC", &LeptonThread::performFFC, lepton);
+    ros::ServiceServer performFCC = nh.advertiseService("performFCC", &LeptonThread::performFFC, lepton);
 	// // QObject::connect(thread, SIGNAL(updateImage(QImage)), &myLabel, SLOT(setImage(QImage)));
   //
 	// //connect ffc button to the thread's ffc action
@@ -75,8 +64,12 @@ int main( int argc, char **argv )
 	// thread->start();
 
 	// myWidget->show();
-
-  ros::spin();
+    
+    //while(true) {
+	    lepton->run();
+      //  ros::spinOnce();
+        //rate.sleep();
+   //}
 
 	return 0 ;
 }
