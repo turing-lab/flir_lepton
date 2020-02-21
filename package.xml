@@ -2,12 +2,9 @@
 <package format="2">
   <name>flir_lepton_rpi</name>
   <version>0.0.0</version>
-  <description>The flir_lepton_rpi package</description>
-
-  <!-- One maintainer tag required, multiple allowed, one person per tag -->
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="diegocdl@todo.todo">diegocdl</maintainer>
+  <description>The Flir Lepton package for Raspberry Pi</description>
+	
+  <maintainer email="diegocdl@galileo.edu">Diego Calderon</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
@@ -25,7 +22,7 @@
   <!-- Author tags are optional, multiple are allowed, one per tag -->
   <!-- Authors do not have to be maintainers, but could be -->
   <!-- Example: -->
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+  <author email="diegocdl@egalileo.edu">Diego Calderon</author>
 
 
   <!-- The *depend tags are used to specify dependencies -->
@@ -60,8 +57,7 @@
   <build_depend>rqt_gui_cpp</build_depend>
 	<build_depend>rqt_gui</build_depend>
   <build_depend>std_srvs</build_depend>
-
-   <exec_depend>std_srvs</exec_depend>
+	<exec_depend>std_srvs</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
