@@ -1,0 +1,5 @@
+<launch>
+  <remap from="image" to="flir_lepton_rpi/thermal_image"/>
+  <node pkg="image_view" type="image_view" name="image_view"/>
+  <node pkg="flir_lepton_rpi" type="flir_lepton_rpi_node" name="flir_lepton_rpi" />
+</launch>

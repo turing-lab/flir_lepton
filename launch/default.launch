@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="flir_lepton_rpi" type="flir_lepton_rpi_node" name="flir_lepton_rpi" />
+</launch>
