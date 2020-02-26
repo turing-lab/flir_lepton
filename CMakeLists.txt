@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(flir_lepton_rpi)
 
-find_package(Qt4 COMPONENTS QtCore QtGui)
-INCLUDE(${QT_USE_FILE})
-ADD_DEFINITIONS(${QT_DEFINITIONS})
-
 find_package( OpenCV REQUIRED )
 # target_link_libraries( DisplayImage ${OpenCV_LIBS} )
 
@@ -19,8 +15,6 @@ find_package(catkin REQUIRED COMPONENTS
 	std_srvs
 	cv_bridge
   sensor_msgs
-	rqt_gui_cpp
-	rqt_gui
 )
 
 ## System dependencies are found with CMake's conventions

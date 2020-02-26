@@ -3,7 +3,7 @@
   <name>flir_lepton_rpi</name>
   <version>0.0.0</version>
   <description>The Flir Lepton package for Raspberry Pi</description>
-	
+
   <maintainer email="diegocdl@galileo.edu">Diego Calderon</maintainer>
 
 
@@ -54,11 +54,10 @@
   <exec_depend>roscpp</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>cv_bridge</exec_depend>
-  <build_depend>rqt_gui_cpp</build_depend>
-	<build_depend>rqt_gui</build_depend>
   <build_depend>std_srvs</build_depend>
 	<exec_depend>std_srvs</exec_depend>
-
+  <build_depend>image_view</build_depend>
+  <exec_depend>image_view</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

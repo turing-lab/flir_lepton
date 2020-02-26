@@ -41,11 +41,11 @@ LeptonThread::LeptonThread()
 
 	imgCount = 0;
 
-    
+
 }
 
 LeptonThread::~LeptonThread() {
-   
+
 }
 
 void LeptonThread::setLogLevel(uint16_t newLoglevel)
@@ -184,7 +184,6 @@ void LeptonThread::run()
 				if ((n_wrong_segment % 12) == 0) {
 					log_message(5, "[WARNING] Got wrong segment number continuously " + std::to_string(n_wrong_segment) + " times");
 				}
-                                //ROS_INFO("Return 2");
 				continue;
 			}
 			if (n_wrong_segment != 0) {
@@ -195,7 +194,6 @@ void LeptonThread::run()
 			//
 			memcpy(shelf[segmentNumber - 1], result, sizeof(uint8_t) * PACKET_SIZE*PACKETS_PER_FRAME);
 			if (segmentNumber != 4) {
-                        //        ROS_INFO("Return 3");
 				continue;
 			}
 			iSegmentStop = 4;
@@ -216,7 +214,6 @@ void LeptonThread::run()
 				for(int i=0;i<FRAME_SIZE_UINT16;i++) {
 					//skip the first 2 uint16_t's of every packet, they're 4 header bytes
 					if(i % PACKET_SIZE_UINT16 < 2) {
-                             //           ROS_INFO("Return 4");
 						continue;
 					}
 
@@ -224,7 +221,6 @@ void LeptonThread::run()
 					uint16_t value = (shelf[iSegment - 1][i*2] << 8) + shelf[iSegment - 1][i*2+1];
 					if (value == 0) {
 						// Why this value is 0?
-                                       // ROS_INFO("Return 5");
 						continue;
 					}
 					if ((autoRangeMax == true) && (value > maxValue)) {
@@ -248,7 +244,6 @@ void LeptonThread::run()
 			for(int i=0;i<FRAME_SIZE_UINT16;i++) {
 				//skip the first 2 uint16_t's of every packet, they're 4 header bytes
 				if(i % PACKET_SIZE_UINT16 < 2) {
-              //  ROS_INFO("Return 6");
 					continue;
 				}
 
@@ -263,7 +258,6 @@ void LeptonThread::run()
 					break;
 				}
 
-				//
 				value = (valueFrameBuffer - minValue) * scale;
 				int ofs_r = 3 * value + 0; if (colormapSize <= ofs_r) ofs_r = colormapSize - 1;
 				int ofs_g = 3 * value + 1; if (colormapSize <= ofs_g) ofs_g = colormapSize - 1;
@@ -288,16 +282,16 @@ void LeptonThread::run()
 
 		//lets emit the signal for update
 		publishImage();
-        ros::spinOnce();
-        rate.sleep();
+    ros::spinOnce();
+    rate.sleep();
 	}
-     //finally, close SPI port just bcuz
+  //finally, close SPI port just bcuz
 	SpiClosePort(0);
 }
 
 void LeptonThread::publishImage()
 {
-    ROS_INFO("Lepton try to publish");
+  ROS_INFO("Lepton try to publish");
 	if (publisherImage != NULL) {
 		cv_bridge::CvImage img_bridge;
 		sensor_msgs::Image img_msg; // >> message to be sent
@@ -307,7 +301,7 @@ void LeptonThread::publishImage()
 		img_bridge = cv_bridge::CvImage(header, sensor_msgs::image_encodings::RGB8, myImage);
 		img_bridge.toImageMsg(img_msg); // from cv_bridge to sensor_msgs::Image
 		publisherImage.publish(img_msg); // ros::Publisher pub_img = node.advertise<sensor_msgs::Image>("topic", queuesize);
-        ROS_INFO("Lepton publish data.");
+    ROS_INFO("Lepton publish data.");
 	}
 }
 

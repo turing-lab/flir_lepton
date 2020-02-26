@@ -56,20 +56,7 @@ int main( int argc, char **argv )
   lepton->setPublisher(imagePublisher);
 	if (0 <= rangeMin) lepton->useRangeMinValue(rangeMin);
 	if (0 <= rangeMax) lepton->useRangeMaxValue(rangeMax);
-    ros::ServiceServer performFCC = nh.advertiseService("performFCC", &LeptonThread::performFFC, lepton);
-	// // QObject::connect(thread, SIGNAL(updateImage(QImage)), &myLabel, SLOT(setImage(QImage)));
-  //
-	// //connect ffc button to the thread's ffc action
-	// // QObject::connect(button1, SIGNAL(clicked()), thread, SLOT(performFFC()));
-	// thread->start();
-
-	// myWidget->show();
-    
-    //while(true) {
-	    lepton->run();
-      //  ros::spinOnce();
-        //rate.sleep();
-   //}
-
+  ros::ServiceServer performFCC = nh.advertiseService("performFCC", &LeptonThread::performFFC, lepton);
+	lepton->run();
 	return 0 ;
 }

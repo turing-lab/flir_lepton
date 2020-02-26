@@ -15,9 +15,7 @@
 
 
 class LeptonThread
-// : public QThread
 {
-  // Q_OBJECT;
 
 public:
   LeptonThread();
@@ -33,16 +31,9 @@ public:
   void setPublisher(ros::Publisher);
   void publishImage();
   void run();
-
-// public slots:
   bool performFFC(std_srvs::Empty::Request&, std_srvs::Empty::Response&);
 
-// signals:
-  // void updateText(QString);
-  // void updateImage(QImage);
-
 private:
-
   void log_message(uint16_t, std::string);
   uint16_t loglevel;
   int typeColormap;
