@@ -1,5 +1,18 @@
 # Flir Lepton ROS package
-This package capture images from the [Flir Lepton Camera](https://www.sparkfun.com/products/14654) and publish them in a ROS topic.
+This package capture images from the [Flir Lepton Camera](https://www.sparkfun.com/products/14654) and publish them in a ROS topic. Tested on ROS melodic in a Raspberry pi 3 and the NVIDIA Jetson Nano.
+
+## Pin Mapping
+
+Camera Pin  | Raspberry Pi Pin          | Nvidia Jetson Nano Pin         
+----------- | :------------------------ | :-----------------------
+CS          | GPIO24 (28)               | GPIO_PZ0 (31)
+MOSI        | GPIO10, SPI_MOSI (19)     | SPI_1_MOSI (19)
+MISO        | GPIO09, SPI_MISO (21)     | SPI_1_MISO (21)
+CLK         | GPIO11, SPI_CLK (23)      | SPI_1_SCK (23)
+GND         | Ground (4)                | GND (9)
+VIN         | 3.3v DC Power (1)         | 3.3 VDC Power (1)
+SDA         | SDA1, GPIO02 (3)          | I2C_2_SDA, I2C Bus 1 (3)
+SCL         | SCL1, GPIO03 (5)          | I2C_2_SCL, I2C Bus 1 (5)
 
 ## flir_lepton_rpi_node
 
