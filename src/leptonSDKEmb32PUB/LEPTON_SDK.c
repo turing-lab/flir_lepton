@@ -63,8 +63,8 @@
 /******************************************************************************/
 /** INCLUDE FILES                                                            **/
 /******************************************************************************/
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_SDK.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_I2C_Protocol.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_SDK.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_I2C_Protocol.h"
 
 
 

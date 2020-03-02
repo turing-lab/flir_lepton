@@ -26,7 +26,7 @@
 *******************************************************************************/
 #ifndef _RASPI_I2C_H_
     #define _RASPI_I2C_H_
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/raspi_I2C.h"
+#include "flir_lepton/leptonSDKEmb32PUB/raspi_I2C.h"
     #ifdef __cplusplus
 extern "C"
 {

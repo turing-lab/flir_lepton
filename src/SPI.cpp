@@ -1,4 +1,4 @@
-#include "flir_lepton_rpi/SPI.h"
+#include "flir_lepton/SPI.h"
 
 int spi_cs0_fd = -1;
 int spi_cs1_fd = -1;

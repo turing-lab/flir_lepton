@@ -46,13 +46,13 @@
 /** INCLUDE FILES                                                            **/
 /******************************************************************************/
 
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/raspi_I2C.h"
+#include "flir_lepton/leptonSDKEmb32PUB/raspi_I2C.h"
 
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_Types.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_ErrorCodes.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_Macros.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/raspi_I2C.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_I2C_Reg.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_Types.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_ErrorCodes.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_Macros.h"
+#include "flir_lepton/leptonSDKEmb32PUB/raspi_I2C.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_I2C_Reg.h"
 #include <stdlib.h>
 
 #include <fcntl.h>

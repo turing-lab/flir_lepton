@@ -1,6 +1,6 @@
 #ifndef TEXTTHREAD
 #define TEXTTHREAD
-#include "flir_lepton_rpi/LeptonThread.h"
+#include "flir_lepton/LeptonThread.h"
 #include <ctime>
 #include <stdint.h>
 

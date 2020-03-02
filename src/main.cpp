@@ -1,6 +1,6 @@
 #include "ros/ros.h"
 #include <sensor_msgs/Image.h>
-#include "flir_lepton_rpi/LeptonThread.h"
+#include "flir_lepton/LeptonThread.h"
 #define RAINBOW 1
 #define GRAYSCALE 2
 #define IRONBLACK 3
@@ -10,7 +10,7 @@
 int main( int argc, char **argv )
 {
 
-  ros::init(argc, argv, "flir_lepton_rpi");
+  ros::init(argc, argv, "flir_lepton");
   ros::NodeHandle nh("~");
 
 	int typeColormap;

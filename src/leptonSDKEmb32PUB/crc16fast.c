@@ -54,7 +54,7 @@
 **
 ****************************************************************************/
 
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/crc16.h"
+#include "flir_lepton/leptonSDKEmb32PUB/crc16.h"
 
 const CRC16 ccitt_16Table[] = {
    0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50A5, 0x60C6, 0x70E7,

@@ -62,8 +62,8 @@
 /******************************************************************************/
 /** INCLUDE FILES                                                            **/
 /******************************************************************************/
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_SDK.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_SYS.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_SDK.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_SYS.h"
 
 /******************************************************************************/
 /** LOCAL DEFINES                                                            **/

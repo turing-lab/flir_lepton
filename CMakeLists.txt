@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(flir_lepton_rpi)
+project(flir_lepton)
 
 find_package( OpenCV REQUIRED )
 # target_link_libraries( DisplayImage ${OpenCV_LIBS} )
@@ -153,14 +153,14 @@ add_executable(
 	src/Palettes.cpp
 	src/SPI.cpp
 	src/Lepton_I2C.cpp
-  src/leptonSDKEmb32PUB/LEPTON_SDK.c
+  	src/leptonSDKEmb32PUB/LEPTON_SDK.c
 	src/leptonSDKEmb32PUB/LEPTON_SYS.c
 	src/leptonSDKEmb32PUB/LEPTON_OEM.c
-  src/leptonSDKEmb32PUB/LEPTON_AGC.c
-  src/leptonSDKEmb32PUB/LEPTON_I2C_Protocol.c
-  src/leptonSDKEmb32PUB/LEPTON_I2C_Service.c
-  src/leptonSDKEmb32PUB/crc16fast.c
-  src/leptonSDKEmb32PUB/raspi_I2C.c
+ 	src/leptonSDKEmb32PUB/LEPTON_AGC.c
+  	src/leptonSDKEmb32PUB/LEPTON_I2C_Protocol.c
+  	src/leptonSDKEmb32PUB/LEPTON_I2C_Service.c
+  	src/leptonSDKEmb32PUB/crc16fast.c
+  	src/leptonSDKEmb32PUB/raspi_I2C.c
 )
 
 ## Rename C++ executable without prefix
@@ -226,7 +226,7 @@ target_link_libraries(${PROJECT_NAME}_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_flir_lepton_rpi.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_flir_lepton.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

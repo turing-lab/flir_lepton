@@ -14,7 +14,7 @@ VIN         | 3.3v DC Power (1)         | 3.3 VDC Power (1)
 SDA         | SDA1, GPIO02 (3)          | I2C_2_SDA, I2C Bus 1 (3)
 SCL         | SCL1, GPIO03 (5)          | I2C_2_SCL, I2C Bus 1 (5)
 
-## flir_lepton_rpi_node
+## flir_lepton_node
 
 ### Publish
   - `~thermal_image`: `sensor_msgs/Image`
@@ -32,5 +32,5 @@ SCL         | SCL1, GPIO03 (5)          | I2C_2_SCL, I2C Bus 1 (5)
 
 ### Execution
 ```bash
-rosrun flir_lepton_rpi flir_lepton_rpi_node
+rosrun flir_lepton flir_lepton_node
 ```

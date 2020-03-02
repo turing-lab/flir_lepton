@@ -1,10 +1,10 @@
 #include <iostream>
 #include "ros/ros.h"
-#include "flir_lepton_rpi/LeptonThread.h"
+#include "flir_lepton/LeptonThread.h"
 
-#include "flir_lepton_rpi/Palettes.h"
-#include "flir_lepton_rpi/SPI.h"
-#include "flir_lepton_rpi/Lepton_I2C.h"
+#include "flir_lepton/Palettes.h"
+#include "flir_lepton/SPI.h"
+#include "flir_lepton/Lepton_I2C.h"
 #include <sensor_msgs/Image.h>
 #include <sensor_msgs/image_encodings.h>
 #include <cv_bridge/cv_bridge.h>

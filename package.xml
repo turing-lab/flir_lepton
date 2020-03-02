@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>flir_lepton_rpi</name>
+  <name>flir_lepton</name>
   <version>0.0.0</version>
   <description>The Flir Lepton package for Raspberry Pi</description>
 
@@ -16,7 +16,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/flir_lepton_rpi</url> -->
+  <!-- <url type="website">http://wiki.ros.org/flir_lepton</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->
