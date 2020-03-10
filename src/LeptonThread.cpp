@@ -96,6 +96,15 @@ void LeptonThread::useSpiSpeedMhz(unsigned int newSpiSpeed)
 	spiSpeed = newSpiSpeed * 1000 * 1000;
 }
 
+void LeptonThread::setAutomaticScalingRange(int enabled) {
+  if(enabled == 1) {
+    setAutomaticScalingRange();
+  } else {
+    autoRangeMin = false;
+  	autoRangeMax = false;
+  }
+}
+
 void LeptonThread::setAutomaticScalingRange()
 {
 	autoRangeMin = true;

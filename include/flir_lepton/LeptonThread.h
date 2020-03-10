@@ -25,6 +25,7 @@ public:
   void useColormap(int);
   void useLepton(int);
   void useSpiSpeedMhz(unsigned int);
+  void setAutomaticScalingRange(int);
   void setAutomaticScalingRange();
   void useRangeMinValue(uint16_t);
   void useRangeMaxValue(uint16_t);

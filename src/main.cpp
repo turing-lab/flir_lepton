@@ -19,6 +19,7 @@ int main( int argc, char **argv )
 	int rangeMin; //
 	int rangeMax; //
 	int loglevel;
+  int autoScale;
   std::string topicName = "thermal_image";
 
   if(!nh.getParam("typeColormap", typeColormap))
@@ -39,6 +40,9 @@ int main( int argc, char **argv )
   if(!nh.getParam("loglevel", loglevel))
     loglevel = 0;
 
+  if(!nh.getParam("autoScale", loglevel))
+    autoScale = 0;
+
   ROS_INFO("Flir Lepton typeColormap: %d", typeColormap);
   ROS_INFO("Flir Lepton typeLepton: %d, SpiSpeed: %d", typeColormap, spiSpeed);
   ROS_INFO("Flir Lepton rangeMin: %d, rangeMax: %d", rangeMin, rangeMax);
@@ -52,7 +56,7 @@ int main( int argc, char **argv )
 	lepton->useColormap(typeColormap);
 	lepton->useLepton(typeLepton);
 	lepton->useSpiSpeedMhz(spiSpeed);
-	lepton->setAutomaticScalingRange();
+	lepton->setAutomaticScalingRange(autoScale);
   lepton->setPublisher(imagePublisher);
 	if (0 <= rangeMin) lepton->useRangeMinValue(rangeMin);
 	if (0 <= rangeMax) lepton->useRangeMaxValue(rangeMax);
