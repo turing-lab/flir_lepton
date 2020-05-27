@@ -13,7 +13,7 @@
 
 #ifndef SPI_H
 #define SPI_H
-#include "flir_lepton_rpi/SPI.h"
+#include "flir_lepton/SPI.h"
 
 #include <string>
 #include <stdint.h>

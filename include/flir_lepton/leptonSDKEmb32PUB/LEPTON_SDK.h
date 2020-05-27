@@ -62,7 +62,7 @@
 #ifndef _LEPTON_SDK_H_
     #define _LEPTON_SDK_H_
 
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_SDK.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_SDK.h"
     #ifdef __cplusplus
 extern "C"
 {
@@ -71,10 +71,10 @@ extern "C"
 /******************************************************************************/
 /** INCLUDE FILES                                                            **/
 /******************************************************************************/
-    #include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_Types.h"
-    #include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_ErrorCodes.h"
-    #include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_SDKConfig.h"
-    #include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_I2C_Protocol.h"
+    #include "flir_lepton/leptonSDKEmb32PUB/LEPTON_Types.h"
+    #include "flir_lepton/leptonSDKEmb32PUB/LEPTON_ErrorCodes.h"
+    #include "flir_lepton/leptonSDKEmb32PUB/LEPTON_SDKConfig.h"
+    #include "flir_lepton/leptonSDKEmb32PUB/LEPTON_I2C_Protocol.h"
 
 /******************************************************************************/
     /**

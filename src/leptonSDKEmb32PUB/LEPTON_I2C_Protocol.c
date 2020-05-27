@@ -63,11 +63,11 @@
 /******************************************************************************/
 /** INCLUDE FILES                                                            **/
 /******************************************************************************/
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_Types.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_ErrorCodes.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_I2C_Protocol.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_I2C_Reg.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/crc16.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_Types.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_ErrorCodes.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_I2C_Protocol.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_I2C_Reg.h"
+#include "flir_lepton/leptonSDKEmb32PUB/crc16.h"
 
 /******************************************************************************/
 /** LOCAL DEFINES                                                            **/

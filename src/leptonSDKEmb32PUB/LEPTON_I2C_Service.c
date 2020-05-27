@@ -67,14 +67,14 @@
 /******************************************************************************/
 /** INCLUDE FILES                                                            **/
 /******************************************************************************/
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_I2C_Service.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_I2C_Service.h"
 
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_Types.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_ErrorCodes.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/LEPTON_I2C_Service.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_Types.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_ErrorCodes.h"
+#include "flir_lepton/leptonSDKEmb32PUB/LEPTON_I2C_Service.h"
 //#include "atxmega128a1_I2C.h"
 //#include "jova_I2C.h"
-#include "flir_lepton_rpi/leptonSDKEmb32PUB/raspi_I2C.h"
+#include "flir_lepton/leptonSDKEmb32PUB/raspi_I2C.h"
 //#include "ftdi_I2C.h"
 
 /******************************************************************************/
