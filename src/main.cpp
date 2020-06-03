@@ -40,8 +40,8 @@ int main( int argc, char **argv )
   if(!nh.getParam("loglevel", loglevel))
     loglevel = 0;
 
-  if(!nh.getParam("autoScale", loglevel))
-    autoScale = 0;
+  if(!nh.getParam("autoScale", autoScale))
+    autoScale = 1;
 
   ROS_INFO("Flir Lepton typeColormap: %d", typeColormap);
   ROS_INFO("Flir Lepton typeLepton: %d, SpiSpeed: %d", typeColormap, spiSpeed);
