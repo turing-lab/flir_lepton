@@ -28,9 +28,10 @@ SCL         | SCL1, GPIO03 (5)          | I2C_2_SCL, I2C Bus 1 (5)
   - `~spiSpeed`: int [Mhz], default: 20, (10 - 30)
   - `~rangeMin`: int, default: automatic scaling range adjustment, (0 - 65535)
   - `~rangeMax`: int, default: automatic scaling range adjustment, (0 - 65535)
+  - `~autoScale`: int, default: 1 (yes = 1 or no = 0)
   - `~loglevel`: int, default: 0 (0 - 255)
 
 ### Execution
 ```bash
-rosrun flir_lepton flir_lepton_node
+roslaunch flir_lepton captureAndView.launch
 ```
