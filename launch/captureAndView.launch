@@ -1,7 +1,5 @@
 <launch>
   <remap from="image" to="flir_lepton/thermal_image"/>
   <node pkg="image_view" type="image_view" name="image_view"/>
-  <node pkg="flir_lepton" type="flir_lepton_node" name="flir_lepton">
-    <param name="typeColormap" type="int" value="1" />
-  </node>
+  <include file="$(find flir_lepton)/launch/default.launch" />
 </launch>
